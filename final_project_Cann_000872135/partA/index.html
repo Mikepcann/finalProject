@@ -18,74 +18,79 @@
         </div>
 
         <div class="row">
-            <div class="col">
+            <div>
                 <div class="card">
                     <div class="card-body">
                         <h2>Short Term Rentals</h2>
                         <p>This dataset shows all licenced Short Term Rental locations in the City of Calgary and its status. Data is provided daily by The City of Calgary.</p>
-                        <p>Search By</p>
+                        <h5>Search By</h5>
                         <ul>
                             <li>Address</li>
-                            <li>Type Of Residence</li>
                             <li>Business Licence Number</li>
                             <li>Licence Type</li>
+                            <li>Type Of Residence</li>
                         </ul>
-                        <button type="button" class="btn btn-primary">Search</button>
+                        <button id="shortTermRentalDisplay" type="button" class="btn btn-primary">Search</button>
                     </div>
                 </div>
             </div>
-            <div class="col">
+            <div>
                 <div class="card">
                     <div class="card-body">
                         <h2>Secondary Suites</h2>
                         <p>This dataset contains information about approved secondary suites in The City of Calgary. It can be viewed on an interactive map at http://secondarysuites.calgary.ca/ Dates for suites approved and completed prior to 2008 are set
                             to Jan 1, 2008.</p>
-                        <p>Search By</p>
+                        <h5>Search By</h5>
                         <ul>
                             <li>Address</li>
                             <li>Community</li>
-                            <li>Ward</li>
                             <li>Sticker Number</li>
+                            <li>Ward</li>
                         </ul>
-                        <button type="button" class="btn btn-primary">Search</button>
+                        <button id="secondarySuiteDisplay" type="button" class="btn btn-primary">Search</button>
                     </div>
                 </div>
             </div>
-            <div class="col">
+            <div>
                 <div class="card">
                     <div class="card-body">
                         <h2>Community Crime Stats</h2>
                         <p>Data is provided monthly by the Calgary Police Service. This data is considered cumulative as late-reported incidents are often received well after an offence has occurred.</p>
-                        <p>Search By</p>
+                        <h5>Search By</h5>
                         <ul>
-                            <li>Sector</li>
-                            <li>Community</li>
                             <li>Category</li>
-                            <li>year</li>
+                            <li>Community</li>
+                            <li>Sector</li>
+                            <li>Year</li>
                         </ul>
-                        <button type="button" class="btn btn-primary">Search</button>
+                        <button id="communityCrimeDisplay" type="button" class="btn btn-primary">Search</button>
                     </div>
                 </div>
             </div>
-            <div class="col">
+            <div>
                 <div class="card">
                     <div class="card-body">
                         <h2>Public Art</h2>
                         <p>Information about artworks in The City of Calgary Public Art Collection, including locations, titles, artists, and descriptions of the artwork.</p>
-                        <p>Search By</p>
+                        <h5>Search By</h5>
                         <ul>
+                            <li>Address</li>
+                            <li>Artist</li>
                             <li>Tab Name</li>
                             <li>Title</li>
-                            <li>Artist</li>
-                            <li>Address</li>
                         </ul>
-                        <button type="button" class="btn btn-primary">Search</button>
+                        <button id="publicArtDisplay" type="button" class="btn btn-primary">Search</button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <script src="./partA.js"></script>
+        <div id="searchForm"></div>
+        <div id="displayResults">
+            <table id="displayTable"></table>
+        </div>
+
+        <script src="./partAscript.js"></script>
     </div>
 </body>
 
