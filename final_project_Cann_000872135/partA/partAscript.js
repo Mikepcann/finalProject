@@ -160,7 +160,6 @@ function assignKeyups(searchForm, searchID) {
                 let elementId = searchID[i].elementId;
                 document.getElementById(elementId).addEventListener('keyup', function() {
                     isText ? searchString(this.value) : searchNumber(this.value);
-                    //console.log(this.value);
                 });
             }
             break;
@@ -170,10 +169,8 @@ function assignKeyups(searchForm, searchID) {
                 let elementId = searchID[i].elementId;
                 document.getElementById(elementId).addEventListener('keyup', function() {
                     isText ? searchString(this.value) : searchNumber(this.value);
-                    //console.log(this.value);
                 });
             }
-
             break;
         case 'communityCrimeStats':
             for (i = 0; i < searchID.length; i++) {
@@ -181,7 +178,6 @@ function assignKeyups(searchForm, searchID) {
                 let elementId = searchID[i].elementId;
                 document.getElementById(elementId).addEventListener('keyup', function() {
                     isText ? searchString(this.value) : searchNumber(this.value);
-                    //console.log(this.value);
                 });
             }
             break;
@@ -191,7 +187,6 @@ function assignKeyups(searchForm, searchID) {
                 let elementId = searchID[i].elementId;
                 document.getElementById(elementId).addEventListener('keyup', function() {
                     isText ? searchString(this.value) : searchNumber(this.value);
-                    //console.log(this.value);
                 });
             }
             break;
@@ -209,9 +204,9 @@ function searchNumber(num) {
 }
 /**
  * Things to to:
- * 1. figure out which form is loaded\
- * 2. load the JSON for that form
- * 3. add keyup events to the appropriate fields
+ * 1. figure out which form is loaded => CHECK
+ * 2. load the JSON for that form => CHECK
+ * 3. add keyup events to the appropriate fields => CHECK
  * 4.  perform search based on the field
  * 5. Display results on page
  * [clear results with each search or change to different dastaset search]
