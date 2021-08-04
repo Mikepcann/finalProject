@@ -7,7 +7,7 @@ let formsList = [{
                 isText: true
             }, {
                 elementId: 'businessLicenceNumberSTR',
-                isText: false
+                isText: true
             },
             {
                 elementId: 'licenseTypeSTR',
@@ -47,7 +47,7 @@ let formsList = [{
                 elementId: 'categoryCCS',
                 isText: true
             }, {
-                elementId: 'communityCCS',
+                elementId: 'monthCCS',
                 isText: true
             },
             {
@@ -86,6 +86,7 @@ let secondarySuiteJSON = [];
 let communityCrimeStatJSON = [];
 let publicArtJSON = [];
 let currentSearch = '';
+let displayTable = document.getElementById('displayTable');
 /* Event listens added to the buttons  
  in order to load the forms
 */
@@ -106,10 +107,10 @@ window.onload = function attachListeners() {
         loadXML(formsList[3], assignKeyups);
     });
     // load JSON Calls
-    loadJSON(formsList[0], shortTermJSON);
-    loadJSON(formsList[1], secondarySuiteJSON);
-    loadJSON(formsList[2], communityCrimeStatJSON);
-    loadJSON(formsList[3], currentSearch);
+    loadJSON(formsList[0]);
+    loadJSON(formsList[1]);
+    loadJSON(formsList[2]);
+    loadJSON(formsList[3]);
 }
 
 // Loads the XML forms onto the page
@@ -125,7 +126,7 @@ function loadXML(fileAddress) {
     xhr.send();
 }
 // load the JSON into the variables
-function loadJSON(rawData, storageVar) {
+function loadJSON(rawData) {
     //console.log(api)
     let xhr = new XMLHttpRequest();
     xhr.open('GET', rawData.api, true);
@@ -159,7 +160,7 @@ function assignKeyups(searchForm, searchID) {
                 let isText = searchID[i].isText;
                 let elementId = searchID[i].elementId;
                 document.getElementById(elementId).addEventListener('keyup', function() {
-                    isText ? searchString(this.value) : searchNumber(this.value);
+                    searchStringSTR(this.value, elementId);
                 });
             }
             break;
@@ -168,7 +169,7 @@ function assignKeyups(searchForm, searchID) {
                 let isText = searchID[i].isText;
                 let elementId = searchID[i].elementId;
                 document.getElementById(elementId).addEventListener('keyup', function() {
-                    isText ? searchString(this.value) : searchNumber(this.value);
+                    searchStringSS(this.value, elementId);
                 });
             }
             break;
@@ -177,7 +178,7 @@ function assignKeyups(searchForm, searchID) {
                 let isText = searchID[i].isText;
                 let elementId = searchID[i].elementId;
                 document.getElementById(elementId).addEventListener('keyup', function() {
-                    isText ? searchString(this.value) : searchNumber(this.value);
+                    searchStringCCS(this.value, elementId);
                 });
             }
             break;
@@ -186,7 +187,7 @@ function assignKeyups(searchForm, searchID) {
                 let isText = searchID[i].isText;
                 let elementId = searchID[i].elementId;
                 document.getElementById(elementId).addEventListener('keyup', function() {
-                    isText ? searchString(this.value) : searchNumber(this.value);
+                    searchStringPA(this.value, elementId);
                 });
             }
             break;
@@ -195,13 +196,260 @@ function assignKeyups(searchForm, searchID) {
     }
 }
 
-function searchString(str) {
-    console.log('Search String called ' + str)
+/**
+ *Search functions for short term rentals
+ * 
+ */
+function searchStringSTR(str, id) {
+    clearTable();
+    str = str.toLowerCase();
+    let property = '';
+    let tablehead =
+        `<thead class ="table-primary"> 
+        <td>Row</td>
+        <td>Address</td>
+        <td>Business Licence Number</td>
+        <td>Licence Type</td>
+        <td>Type Of Residence</td>
+        <td>Map Link</td>
+        </thead>`;
+
+    switch (id) {
+        case 'addressSTR':
+            property = 'address';
+            break;
+        case 'businessLicenceNumberSTR':
+            property = 'business_licence_number';
+            break;
+        case 'licenseTypeSTR':
+            property = 'business_licence_type';
+            break;
+        case 'typeOfResidenceSTR':
+            property = 'type_of_residence';
+            break;
+        default:
+            console.error('ERROR');
+            break;
+    }
+    // console.log('The one called ' + id)
+    // console.log(property)
+
+    for (i = 0; i < shortTermJSON.length; i++) {
+        // used if the property does no exist on a record
+        if (shortTermJSON[i][`${property}`] == undefined) {
+            continue;
+        }
+        if (shortTermJSON[i][`${property}`].toLowerCase().startsWith(str)) {
+            // console.log(shortTermJSON[i]);
+            tablehead +=
+                `<tr class="table-primary">
+                <td>${i +1}</td>
+            <td>${shortTermJSON[i].address}</td>
+            <td>${shortTermJSON[i].business_licence_number}</td>
+            <td>${shortTermJSON[i].business_licence_type}</td>
+            <td>${shortTermJSON[i].type_of_residence}</td>
+            <td>${createMap(shortTermJSON[i].latitude,shortTermJSON[i].longitude)}</td>
+        </tr>`;
+        }
+    }
+    displayTable.innerHTML = tablehead;
+
 }
 
-function searchNumber(num) {
-    console.log('Search number called ' + num)
+
+/**
+ *Search functions for Secondary Suites
+ * 
+ */
+function searchStringSS(str, id) {
+    clearTable();
+    str = str.toLowerCase();
+    let property = '';
+    let tablehead =
+        `<thead class ="table-primary"> 
+        <td>Row</td>
+        <td>Address</td>
+        <td>Community</td>
+        <td>Sticker Number</td>
+        <td>Ward</td>
+        <td>Map Link</td>
+        </thead>`;
+
+    switch (id) {
+        case 'addressSS':
+            property = 'address';
+            break;
+        case 'communitySS':
+            property = 'community';
+            break;
+        case 'stickerNumberSS':
+            property = 'stickernumber';
+            break;
+        case 'wardSS':
+            property = 'ward';
+            break;
+        default:
+            console.error('ERROR');
+            break;
+    }
+    // console.log('The one called ' + id)
+    // console.log(property)
+
+    for (i = 0; i < secondarySuiteJSON.length; i++) {
+        // used if the property does no exist on a record
+        if (secondarySuiteJSON[i][`${property}`] == undefined) {
+            continue;
+        }
+        if (secondarySuiteJSON[i][`${property}`].toLowerCase().startsWith(str)) {
+            // console.log(shortTermJSON[i]);
+            tablehead +=
+                `<tr class="table-primary">
+                <td>${i +1}</td>
+            <td>${secondarySuiteJSON[i].address}</td>
+            <td>${secondarySuiteJSON[i].community}</td>
+            <td>${secondarySuiteJSON[i].stickernumber}</td>
+            <td>${secondarySuiteJSON[i].ward}</td>
+            <td>${createMap(secondarySuiteJSON[i].latitude,secondarySuiteJSON[i].longitude)}</td>
+        </tr>`;
+        }
+    }
+    displayTable.innerHTML = tablehead;
+
 }
+
+
+/**
+ *Search functions for Community Crim stats
+ * 
+ */
+function searchStringCCS(str, id) {
+    clearTable();
+    str = str.toLowerCase();
+    let property = '';
+    let tablehead =
+        `<thead class ="table-primary"> 
+        <td>Row</td>
+        <td>Category</td>
+        <td>Month</td>
+        <td>Sector</td>
+        <td>Year</td>
+        <td>Map Link</td>
+        </thead>`;
+
+    switch (id) {
+        case 'categoryCCS':
+            property = 'category';
+            break;
+        case 'monthCCS':
+            property = 'month';
+            break;
+        case 'sectorCCS':
+            property = 'sector';
+            break;
+        case 'yearCCS':
+            property = 'year';
+            break;
+        default:
+            console.error('ERROR');
+            break;
+    }
+    // console.log('The one called ' + id)
+    // console.log(property)
+
+    for (i = 0; i < communityCrimeStatJSON.length; i++) {
+        // used if the property does no exist on a record
+        if (communityCrimeStatJSON[i][`${property}`] == undefined) {
+            continue;
+        }
+        if (communityCrimeStatJSON[i][`${property}`].toLowerCase().startsWith(str)) {
+            // console.log(shortTermJSON[i]);
+            tablehead +=
+                `<tr class="table-primary">
+                <td>${i +1}</td>
+            <td>${communityCrimeStatJSON[i].category}</td>
+            <td>${communityCrimeStatJSON[i].month}</td>
+            <td>${communityCrimeStatJSON[i].sector}</td>
+            <td>${communityCrimeStatJSON[i].year}</td>
+            <td>${createMap(communityCrimeStatJSON[i].latitude,secondarySuiteJSON[i].longitude)}</td>
+        </tr>`;
+        }
+    }
+    displayTable.innerHTML = tablehead;
+
+}
+
+
+/**
+ *Search functions for Public Art
+ * 
+ */
+function searchStringPA(str, id) {
+    clearTable();
+    str = str.toLowerCase();
+    let property = '';
+    let tablehead =
+        `<thead class ="table-primary"> 
+        <td>Row</td>
+        <td>Address</td>
+        <td>Artist</td>
+        <td>Tab Name</td>
+        <td>Title</td>
+        <td>Map Link</td>
+        </thead>`;
+
+    switch (id) {
+        case 'addressPA':
+            property = 'address';
+            break;
+        case 'artistPA':
+            property = 'artist';
+            break;
+        case 'tabNamePA':
+            property = 'tab_name';
+            break;
+        case 'titlePA':
+            property = 'title';
+            break;
+        default:
+            console.error('ERROR');
+            break;
+    }
+    // console.log('The one called ' + id)
+    // console.log(property)
+
+    for (i = 0; i < publicArtJSON.length; i++) {
+        // used if the property does no exist on a record
+        if (publicArtJSON[i][`${property}`] == undefined) {
+            continue;
+        }
+        if (publicArtJSON[i][`${property}`].toLowerCase().startsWith(str)) {
+            // console.log(shortTermJSON[i]);
+            tablehead +=
+                `<tr class="table-primary">
+                <td>${i +1}</td>
+            <td>${publicArtJSON[i].address}</td>
+            <td>${publicArtJSON[i].artist}</td>
+            <td>${publicArtJSON[i].tab_name}</td>
+            <td>${publicArtJSON[i].title}</td>
+            <td>${createMap(publicArtJSON[i].latitude,publicArtJSON[i].longitude)}</td>
+        </tr>`;
+        }
+    }
+    displayTable.innerHTML = tablehead;
+
+}
+
+
+
+const createMap = (lat, long) =>
+    `<a href= "https://www.google.com/maps/search/?api=1&query=${lat},${long}" target="_blank">Google Maps</A>`;
+
+// clears table when changing fields
+function clearTable() {
+    displayTable.innerHTML = "";
+
+}
+
 /**
  * Things to to:
  * 1. figure out which form is loaded => CHECK
