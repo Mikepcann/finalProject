@@ -93,7 +93,6 @@ let displayTable = document.getElementById('displayTable');
 window.onload = function attachListeners() {
     document.getElementById('shortTermRentalDisplay').addEventListener('click', function() {
         loadXML(formsList[0], assignKeyups);
-
     });
 
     document.getElementById('secondarySuiteDisplay').addEventListener('click', function() {
@@ -106,6 +105,7 @@ window.onload = function attachListeners() {
     document.getElementById('publicArtDisplay').addEventListener('click', function() {
         loadXML(formsList[3], assignKeyups);
     });
+
     // load JSON Calls
     loadJSON(formsList[0]);
     loadJSON(formsList[1]);
