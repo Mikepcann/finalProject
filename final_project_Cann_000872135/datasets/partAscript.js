@@ -231,8 +231,6 @@ function searchStringSTR(str, id) {
             console.error('ERROR');
             break;
     }
-    // console.log('The one called ' + id)
-    // console.log(property)
 
     for (i = 0; i < shortTermJSON.length; i++) {
         // used if the property does no exist on a record
@@ -240,7 +238,6 @@ function searchStringSTR(str, id) {
             continue;
         }
         if (shortTermJSON[i][`${property}`].toLowerCase().startsWith(str)) {
-            // console.log(shortTermJSON[i]);
             tablehead +=
                 `<tr class="table-primary">
                 <td>${i +1}</td>
@@ -292,8 +289,6 @@ function searchStringSS(str, id) {
             console.error('ERROR');
             break;
     }
-    // console.log('The one called ' + id)
-    // console.log(property)
 
     for (i = 0; i < secondarySuiteJSON.length; i++) {
         // used if the property does no exist on a record
@@ -301,7 +296,6 @@ function searchStringSS(str, id) {
             continue;
         }
         if (secondarySuiteJSON[i][`${property}`].toLowerCase().startsWith(str)) {
-            // console.log(shortTermJSON[i]);
             tablehead +=
                 `<tr class="table-primary">
                 <td>${i +1}</td>
@@ -353,8 +347,6 @@ function searchStringCCS(str, id) {
             console.error('ERROR');
             break;
     }
-    // console.log('The one called ' + id)
-    // console.log(property)
 
     for (i = 0; i < communityCrimeStatJSON.length; i++) {
         // used if the property does no exist on a record
@@ -362,7 +354,6 @@ function searchStringCCS(str, id) {
             continue;
         }
         if (communityCrimeStatJSON[i][`${property}`].toLowerCase().startsWith(str)) {
-            // console.log(shortTermJSON[i]);
             tablehead +=
                 `<tr class="table-primary">
                 <td>${i +1}</td>
@@ -414,8 +405,6 @@ function searchStringPA(str, id) {
             console.error('ERROR');
             break;
     }
-    // console.log('The one called ' + id)
-    // console.log(property)
 
     for (i = 0; i < publicArtJSON.length; i++) {
         // used if the property does no exist on a record
@@ -423,7 +412,6 @@ function searchStringPA(str, id) {
             continue;
         }
         if (publicArtJSON[i][`${property}`].toLowerCase().startsWith(str)) {
-            // console.log(shortTermJSON[i]);
             tablehead +=
                 `<tr class="table-primary">
                 <td>${i +1}</td>

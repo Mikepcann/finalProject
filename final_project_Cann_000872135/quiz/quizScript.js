@@ -5,8 +5,6 @@ let answers = [];
 function loadQuiz() {
     let xhr = new XMLHttpRequest();
     xhr.onload = () => {
-        //xml = xhr.responseXML;
-        //console.log(xhr);
         displayQuestions(xhr);
     }
     xhr.open('GET', './FinalQuiz.xml', true);
