@@ -31,21 +31,104 @@
                 <h4>Select Name</h4>
                 <div id="resultBox">
                     <ul id="resultList">
-                        <li>1</li>
-                        <li>2</li>
-                        <li>3</li>
-                        <li>4</li>
-                        <li>5</li>
-                        <li>6</li>
-                        <li>7</li>
-                        <li>8</li>
+
                     </ul>
                 </div>
-
-
             </div>
             <div class="row">
                 <h3>Rental Form</h3>
+                <div class="row">
+                    <div class="card" style="width: 18rem;">
+                        <!-- https://www.jdpower.com/cars/ratings/quality/2020/top-rated-2020-small-cars-in-quality-according-to-consumers -->
+                        <img src="./img/compact.jpg" class="card-img-top" alt="2020 Honda Fit">
+                        <div class="card-body">
+                            <h5 class="card-title">Compact</h5>
+                            <p class="card-text">Enjoy the super reliable 2020 Honda Fit. Great on gas and for when you don't to worry about transporting large amouts of luggage.</p>
+                            <p>$15/Day</p>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="carType" value="compact" id="compactSelector" disabled>
+                                <label class="form-check-label" for="compact">
+                                  Compact
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card" style="width: 18rem;">
+                        <!-- https://www.jdpower.com/cars/sedans/10-most-popular-midsize-cars -->
+                        <img src="./img/midsized.jpg" class="card-img-top" alt="Mazda 6">
+                        <div class="card-body">
+                            <h5 class="card-title">Mid-Sized</h5>
+                            <p class="card-text">Enjoy the trendy Mazda 6 for your trip. More room and a smooth ride to get you where you are going in a little more style.</p>
+                            <p>$20/Day</p>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="carType" value="midSized" id="midSizedtSelector" disabled>
+                                <label class="form-check-label" for="midSized">
+                                    Mid-Sized                             </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card" style="width: 18rem;">
+                        <!-- https://www.extremetech.com/extreme/272595-which-jd-power-study-should-you-trust-the-most -->
+                        <img src="./img/luxury.jpg" class="card-img-top" alt="Genesis G90">
+                        <div class="card-body">
+                            <h5 class="card-title">Luxury</h5>
+                            <p class="card-text">When luxury is your priority, there is no better choice than the Genesis G90. It's drives and smooth as it looks!</p>
+                            <p>$35/Day</p>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="carType" value="luxury" id="luxurySelector" disabled>
+                                <label class="form-check-label" for="luxury">
+                                    Luxury
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card" style="width: 18rem;">
+                        <!-- https://www.f150online.com/articles/ford-e-series-van-truck-makes-converts-out-of-us/ -->
+                        <img src="./img/vanTruck.jpg" class="card-img-top" alt="Ford E-Series Truck Conversion">
+                        <div class="card-body">
+                            <h5 class="card-title">Van/Truck</h5>
+                            <p class="card-text">Never have to choose between a Truck or Van again with the stylish Ford E-Series Truck Conversion.</p>
+                            <p>$40/Day</p>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="carType" value="vanTruck" id="vanTruckSelector" disabled>
+                                <label class="form-check-label" for="vanTruck">
+                                    Van/Truck
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="options">
+                    <h4>Rental Options</h4>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="roofRack" id="roofRack" disabled>
+                        <label class="form-check-label" for="flexCheckDefault">
+                            Roof Rack or Bicycle Rack extra $5/day 
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="GPS" id="GPS" disabled>
+                        <label class="form-check-label" for="flexCheckChecked">
+                            GPS extra $10 (lump sum)
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="childSeat" id="childSeat" disabled>
+                        <label class="form-check-label" for="flexCheckChecked">
+                            Child Seat free
+                        </label>
+                    </div>
+                </div>
+                <div class="rentalLength">
+                    <h4>Rental Length (1-30 Days)</h4>
+                    <label for="customRange3" class="form-label">Rental Days</label> <span class="rentalDayDisplay"></span>
+                    <input type="range" class="form-range" min="1" max="30" step="1" id="rentalDayValue" disabled>
+                </div>
+                <div class="finalizeOrder row">
+                    <button type="button" class="btn btn-primary" id='finishOrder' onclick="finishOrder()" disabled>Finish Rental</button>
+                </div>
+                <div class="order"></div>
             </div>
 
         </div>
