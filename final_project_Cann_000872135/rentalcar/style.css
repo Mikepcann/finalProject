@@ -1,0 +1,12 @@
+#resultBox {
+    height: 400px;
+    width: 100%;
+    border: 2px solid royalblue;
+    overflow-y: scroll;
+    padding: 15px 20px;
+}
+
+li:hover {
+    background-color: rebeccapurple;
+    color: aliceblue;
+}
