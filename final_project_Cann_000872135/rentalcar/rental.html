@@ -46,7 +46,7 @@
                             <p class="card-text">Enjoy the super reliable 2020 Honda Fit. Great on gas and for when you don't to worry about transporting large amouts of luggage.</p>
                             <p>$15/Day</p>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="carType" value="compact" id="compactSelector" disabled>
+                                <input class="form-check-input" type="radio" name="carType" value="Compact 15" id="compactSelector" disabled>
                                 <label class="form-check-label" for="compact">
                                   Compact
                                 </label>
@@ -61,7 +61,7 @@
                             <p class="card-text">Enjoy the trendy Mazda 6 for your trip. More room and a smooth ride to get you where you are going in a little more style.</p>
                             <p>$20/Day</p>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="carType" value="midSized" id="midSizedtSelector" disabled>
+                                <input class="form-check-input" type="radio" name="carType" value="Mid-Sized 20" id="midSizedtSelector" disabled>
                                 <label class="form-check-label" for="midSized">
                                     Mid-Sized                             </label>
                             </div>
@@ -75,7 +75,7 @@
                             <p class="card-text">When luxury is your priority, there is no better choice than the Genesis G90. It's drives and smooth as it looks!</p>
                             <p>$35/Day</p>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="carType" value="luxury" id="luxurySelector" disabled>
+                                <input class="form-check-input" type="radio" name="carType" value="Luxury 35" id="luxurySelector" disabled>
                                 <label class="form-check-label" for="luxury">
                                     Luxury
                                 </label>
@@ -90,7 +90,7 @@
                             <p class="card-text">Never have to choose between a Truck or Van again with the stylish Ford E-Series Truck Conversion.</p>
                             <p>$40/Day</p>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="carType" value="vanTruck" id="vanTruckSelector" disabled>
+                                <input class="form-check-input" type="radio" name="carType" value="Van/Truck 40" id="vanTruckSelector" disabled>
                                 <label class="form-check-label" for="vanTruck">
                                     Van/Truck
                                 </label>
@@ -102,7 +102,7 @@
                 <div class="options">
                     <h4>Rental Options</h4>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="roofRack" id="roofRack" disabled>
+                        <input class="form-check-input" type="checkbox" value="Roof Rack or Bicycle Rack" id="roofRack" disabled>
                         <label class="form-check-label" for="flexCheckDefault">
                             Roof Rack or Bicycle Rack extra $5/day 
                         </label>
@@ -114,7 +114,7 @@
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="childSeat" id="childSeat" disabled>
+                        <input class="form-check-input" type="checkbox" value="Child Seat" id="childSeat" disabled>
                         <label class="form-check-label" for="flexCheckChecked">
                             Child Seat free
                         </label>
@@ -122,13 +122,38 @@
                 </div>
                 <div class="rentalLength">
                     <h4>Rental Length (1-30 Days)</h4>
-                    <label for="customRange3" class="form-label">Rental Days</label> <span class="rentalDayDisplay"></span>
-                    <input type="range" class="form-range" min="1" max="30" step="1" id="rentalDayValue" disabled>
+                    <label for="customRange3" class="form-label">Rental Days</label> <span class="rentalDayDisplay">1</span>
+                    <input type="range" class="form-range" min="1" max="30" step="1" value="1" id="rentalDayValue" disabled>
                 </div>
                 <div class="finalizeOrder row">
                     <button type="button" class="btn btn-primary" id='finishOrder' onclick="finishOrder()" disabled>Finish Rental</button>
                 </div>
-                <div class="order"></div>
+                <div class="order">
+                    <!-- <h3>Car Rental for</h3>
+                    <h4>${currentClient.info.first_name} ${currentClient.info.last_name}</h4>
+                    <p>${currentClient.info.address}, ${currentClient.info.state_prov}
+                        <br>${currentClient.info.email}
+                        <br>${currentClient.info.phone}
+                    </p>
+                    <table class="table">
+                        <tr>
+                            <th>Car Type</th>
+                            <th>Price Per Day</th>
+                        </tr>
+                        <tr>
+                            <td>${carType[0]}</td>
+                            <td>$${carType[1]}/Day</td>
+                        </tr>
+                        <tr>
+                            <th>Number Of Days</th>
+                            <th>Total Price Per Days</th>
+                        </tr>
+                        <tr>
+                            <td>${numOfDays}</td>
+                            <td>$${carRentalTotal}</td>
+                        </tr>
+                    </table> -->
+                </div>
             </div>
 
         </div>

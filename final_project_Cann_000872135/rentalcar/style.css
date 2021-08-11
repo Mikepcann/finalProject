@@ -43,4 +43,6 @@
         border: 2px solid royalblue;
         margin: auto;
         display: none;
+        overflow: auto;
+        margin-bottom: 100px;
     }

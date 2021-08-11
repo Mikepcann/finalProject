@@ -99,17 +99,106 @@ function finishOrder() {
     order.style.display = 'block';
 
     // get values of selectors
-    let carType = document.querySelector('input[type="radio"]:checked').value;
+    let carType = document.querySelector('input[type="radio"]:checked').value.split(' ');
 
     let rentalOptions = document.querySelectorAll('input[type="checkbox"]:checked');
+    let numOfDays = document.getElementById('rentalDayValue').value;
     let pickedOptions = [];
+    let carRentalTotal = (numOfDays * parseInt(carType[1])).toFixed(2);
+    let roofRackTotal = 0;
+    let gpsTotal = 0;
+    let childSeatTotal = 0;
+    let optionsTable = '';
+    let finalRentalPrice = 0;
+    // adds selected items to an Array
 
-    function load() {
+
+
+    (function load() {
         for (i = 0; i < rentalOptions.length; i++) {
             pickedOptions.push(rentalOptions[i].value)
         }
-    };
-    load();
-
+    })();
+    // move through list
+    // figure out what the item is
+    // calculate cost
+    // add table for options
+    //display final total price
     console.log(pickedOptions)
+    let tableValues =
+        `<h3>Car Rental for</h3>
+    <h4>${currentClient.info.first_name} ${currentClient.info.last_name}</h4>
+    <p>${currentClient.info.address}, ${currentClient.info.state_prov}
+        <br>${currentClient.info.email}
+        <br>${currentClient.info.phone}
+    </p>
+    <table class="table">
+        <tr>
+            <th>Car Type</th>
+            <th>Price Per Day</th>
+        </tr>
+        <tr>
+            <td>${carType[0]}</td>
+            <td>$${carType[1]}/Day</td>
+        </tr>
+        <tr>
+            <th>Number Of Days</th>
+            <th>Total Price Per Days</th>
+        </tr>
+        <tr>
+            <td>${numOfDays}</td>
+            <td>$${carRentalTotal}</td>
+        </tr>`;
+
+    (function formatOptionTable() {
+            optionsTable +=
+                ` <tr>
+            <th>Option</th>
+            <th>Price</th>
+            </tr>`;
+            for (i = 0; i < pickedOptions.length; i++) {
+                if (pickedOptions[i].startsWith('Roof Rack or Bicycle Rack')) {
+                    //add roof rack optin
+                    roofRackTotal = (5 * numOfDays).toFixed(2);
+                    let rRow =
+                        `<tr>
+                        <td>${pickedOptions[i]}</td>
+                        <td>$${roofRackTotal}</td>
+                    </tr>`;
+
+                    optionsTable += rRow;
+                } else if (pickedOptions[i].startsWith('GPS')) {
+                    gpsTotal = (10).toFixed(2);
+                    let gpsRow = `<tr>
+                <td>${pickedOptions[i]}</td>
+                <td>$${gpsTotal}</td>
+            </tr>`;
+                    optionsTable += gpsRow;
+                } else if (pickedOptions[i].startsWith('Child Seat')) {
+                    childSeatTotal = (0).toFixed(2);
+                    let csRow = `<tr>
+                <td>${pickedOptions[i]}</td>
+                <td>$${childSeatTotal}</td>
+            </tr>`;
+
+                    optionsTable += csRow;
+                }
+            }
+
+            if (!pickedOptions.length == 0) {
+                order.innerHTML += optionsTable;
+                tableValues += optionsTable
+            }
+        }
+
+    )()
+
+    finalRentalPrice = carRentalTotal + childSeatTotal + gpsTotal + roofRackTotal;
+    tableValues +=
+        `<tr><th colspan="2">FINAL RENTAL PRICE</th></tr>
+        <tr><td></td><td>$${finalRentalPrice}</td></tr></table>`;
+    order.innerHTML = tableValues;
+
+
+
 }
