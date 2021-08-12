@@ -92,17 +92,21 @@ let displayTable = document.getElementById('displayTable');
 */
 window.onload = function attachListeners() {
     document.getElementById('shortTermRentalDisplay').addEventListener('click', function() {
+        document.getElementById('searchForm').style.display = 'block';
         loadXML(formsList[0], assignKeyups);
     });
 
     document.getElementById('secondarySuiteDisplay').addEventListener('click', function() {
+        document.getElementById('searchForm').style.display = 'block';
         loadXML(formsList[1], assignKeyups);
     });
 
     document.getElementById('communityCrimeDisplay').addEventListener('click', function() {
+        document.getElementById('searchForm').style.display = 'block';
         loadXML(formsList[2], assignKeyups);
     });
     document.getElementById('publicArtDisplay').addEventListener('click', function() {
+        document.getElementById('searchForm').style.display = 'block';
         loadXML(formsList[3], assignKeyups);
     });
 
@@ -205,7 +209,7 @@ function searchStringSTR(str, id) {
     str = str.toLowerCase();
     let property = '';
     let tablehead =
-        `<thead class ="table-primary"> 
+        `<thead class ="table"> 
         <td>Row</td>
         <td>Address</td>
         <td>Business Licence Number</td>
@@ -239,7 +243,7 @@ function searchStringSTR(str, id) {
         }
         if (shortTermJSON[i][`${property}`].toLowerCase().startsWith(str)) {
             tablehead +=
-                `<tr class="table-primary">
+                `<tr class="table">
                 <td>${i +1}</td>
             <td>${shortTermJSON[i].address}</td>
             <td>${shortTermJSON[i].business_licence_number}</td>
@@ -263,7 +267,7 @@ function searchStringSS(str, id) {
     str = str.toLowerCase();
     let property = '';
     let tablehead =
-        `<thead class ="table-primary"> 
+        `<thead class ="table"> 
         <td>Row</td>
         <td>Address</td>
         <td>Community</td>
@@ -297,7 +301,7 @@ function searchStringSS(str, id) {
         }
         if (secondarySuiteJSON[i][`${property}`].toLowerCase().startsWith(str)) {
             tablehead +=
-                `<tr class="table-primary">
+                `<tr class="table">
                 <td>${i +1}</td>
             <td>${secondarySuiteJSON[i].address}</td>
             <td>${secondarySuiteJSON[i].community}</td>
@@ -321,7 +325,7 @@ function searchStringCCS(str, id) {
     str = str.toLowerCase();
     let property = '';
     let tablehead =
-        `<thead class ="table-primary"> 
+        `<thead class ="table"> 
         <td>Row</td>
         <td>Category</td>
         <td>Month</td>
@@ -355,7 +359,7 @@ function searchStringCCS(str, id) {
         }
         if (communityCrimeStatJSON[i][`${property}`].toLowerCase().startsWith(str)) {
             tablehead +=
-                `<tr class="table-primary">
+                `<tr class="table">
                 <td>${i +1}</td>
             <td>${communityCrimeStatJSON[i].category}</td>
             <td>${communityCrimeStatJSON[i].month}</td>
@@ -379,7 +383,7 @@ function searchStringPA(str, id) {
     str = str.toLowerCase();
     let property = '';
     let tablehead =
-        `<thead class ="table-primary"> 
+        `<thead class ="table"> 
         <td>Row</td>
         <td>Address</td>
         <td>Artist</td>
@@ -413,7 +417,7 @@ function searchStringPA(str, id) {
         }
         if (publicArtJSON[i][`${property}`].toLowerCase().startsWith(str)) {
             tablehead +=
-                `<tr class="table-primary">
+                `<tr class="table">
                 <td>${i +1}</td>
             <td>${publicArtJSON[i].address}</td>
             <td>${publicArtJSON[i].artist}</td>
