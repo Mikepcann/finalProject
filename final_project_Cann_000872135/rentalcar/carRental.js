@@ -26,7 +26,6 @@ document.getElementById('lastNameSearch').addEventListener('keyup', function() {
     searchList(this.value)
 })
 
-
 const searchList = (lName) => {
     // clears the list 
     document.getElementById('resultList').innerHTML = '';
@@ -66,6 +65,7 @@ function displayNum(days) {
     document.querySelector('.rentalDayDisplay').innerHTML = days;
 }
 let enableForm = () => {
+    // allow selectors to be used
     document.getElementById('compactSelector').disabled = false;
     document.getElementById('midSizedtSelector').disabled = false;
     document.getElementById('luxurySelector').disabled = false;
@@ -76,6 +76,20 @@ let enableForm = () => {
     document.getElementById('rentalDayValue').disabled = false;
     document.getElementById('finishOrder').disabled = false;
 
+    // add eventListeners to pictures
+    document.querySelector('[src="./img/compact.jpg"]').addEventListener('click', () => {
+        document.getElementById('compactSelector').checked = true;
+    })
+    document.querySelector('[src="./img/midsized.jpg"]').addEventListener('click', () => {
+        document.getElementById('midSizedtSelector').checked = true;
+    })
+    document.querySelector('[src="./img/luxury.jpg"]').addEventListener('click', () => {
+        document.getElementById('luxurySelector').checked = true;
+    })
+    document.querySelector('[src="./img/vanTruck.jpg"]').addEventListener('click', () => {
+        document.getElementById('vanTruckSelector').checked = true;
+    })
+
 }
 
 // Saves the client info in an global var
@@ -83,7 +97,6 @@ function findCurrentClientOBJ(fullName) {
     let full = fullName.split(' ');
     currentClient.fName = full[0];
     currentClient.lName = full[1];
-    console.log('Clicked CLient Name: ' + currentClient.fName + ' ' + currentClient.lName)
 
     for (i = 0; i < clientArr.length; i++) {
         if ((currentClient.fName == clientArr[i].first_name) &&
@@ -104,7 +117,7 @@ function finishOrder() {
     let rentalOptions = document.querySelectorAll('input[type="checkbox"]:checked');
     let numOfDays = document.getElementById('rentalDayValue').value;
     let pickedOptions = [];
-    let carRentalTotal = (numOfDays * parseInt(carType[1])).toFixed(2);
+    let carRentalTotal = numOfDays * parseInt(carType[1]);
     let roofRackTotal = 0;
     let gpsTotal = 0;
     let childSeatTotal = 0;
@@ -124,7 +137,7 @@ function finishOrder() {
     // calculate cost
     // add table for options
     //display final total price
-    console.log(pickedOptions)
+
     let tableValues =
         `<h3>Car Rental for</h3>
     <h4>${currentClient.info.first_name} ${currentClient.info.last_name}</h4>
@@ -147,9 +160,9 @@ function finishOrder() {
         </tr>
         <tr>
             <td>${numOfDays}</td>
-            <td>$${carRentalTotal}</td>
+            <td>$${carRentalTotal.toFixed(2)}</td>
         </tr>`;
-
+    console.log('Car rental total before Function: ' + typeof carRentalTotal);
     (function formatOptionTable() {
             optionsTable +=
                 ` <tr>
@@ -159,28 +172,29 @@ function finishOrder() {
             for (i = 0; i < pickedOptions.length; i++) {
                 if (pickedOptions[i].startsWith('Roof Rack or Bicycle Rack')) {
                     //add roof rack optin
-                    roofRackTotal = (5 * numOfDays).toFixed(2);
+                    roofRackTotal = (5 * numOfDays);
                     let rRow =
                         `<tr>
                         <td>${pickedOptions[i]}</td>
-                        <td>$${roofRackTotal}</td>
+                        <td>$${roofRackTotal.toFixed(2)}</td>
                     </tr>`;
-
+                    console.log('roof rack total ' + typeof roofRackTotal)
                     optionsTable += rRow;
                 } else if (pickedOptions[i].startsWith('GPS')) {
-                    gpsTotal = (10).toFixed(2);
+                    gpsTotal = 10;
                     let gpsRow = `<tr>
                 <td>${pickedOptions[i]}</td>
-                <td>$${gpsTotal}</td>
+                <td>$${gpsTotal.toFixed(2)}</td>
             </tr>`;
+                    console.log('gps ' + typeof gpsTotal)
                     optionsTable += gpsRow;
                 } else if (pickedOptions[i].startsWith('Child Seat')) {
-                    childSeatTotal = (0).toFixed(2);
+                    // childSeatTotal = (0).toFixed(2);
                     let csRow = `<tr>
                 <td>${pickedOptions[i]}</td>
-                <td>$${childSeatTotal}</td>
+                <td>$${childSeatTotal.toFixed(2)}</td>
             </tr>`;
-
+                    console.log('child seat' + typeof childSeatTotal)
                     optionsTable += csRow;
                 }
             }
@@ -196,7 +210,7 @@ function finishOrder() {
     finalRentalPrice = carRentalTotal + childSeatTotal + gpsTotal + roofRackTotal;
     tableValues +=
         `<tr><th colspan="2">FINAL RENTAL PRICE</th></tr>
-        <tr><td></td><td>$${finalRentalPrice}</td></tr></table>`;
+        <tr><td></td><td>$${finalRentalPrice.toFixed(2)}</td></tr></table>`;
     order.innerHTML = tableValues;
 
 
