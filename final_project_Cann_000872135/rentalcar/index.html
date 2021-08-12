@@ -13,9 +13,90 @@
     <div class="container">
         <h1>Dodgey Brakes Car Rental</h1>
         <h3>This is the last part before styling all pages!</h3>
-
+        <p id="currentTime"></p>
         <a href="./rental.html">Rent A Car!</a>
     </div>
+    <script>
+        const displayTime = document.getElementById('currentTime');
+        const display = (date = new Date()) => {
+            let ampm = (date.getHours() >= 12) ? 'pm' : 'am';
+            let localHr = (date.getHours() <= 12) ? date.getHours() : date.getHours() - 12;
+            let weekday = '';
+            switch (date.getDay()) {
+                case 0:
+                    weekday = 'Sunday'
+                    break;
+                case 1:
+                    weekday = 'Monday';
+                case 2:
+                    weekday = 'Tuesday';
+                    break;
+                case 3:
+                    weekday = 'Wednesday';
+                    break;
+                case 4:
+                    weekday = 'Thursday';
+                    break;
+                case 5:
+                    weekday = 'Friday';
+                    break;
+                case 6:
+                    weekday = 'Saturday';
+                    break;
+                default:
+                    console.error('There was an error in the Day!');
+                    break;
+            }
+            let month = '';
+            switch (date.getMonth()) {
+                case 0:
+                    month = 'January'
+                    break;
+                case 1:
+                    month = 'Febuary';
+                case 2:
+                    month = 'March';
+                    break;
+                case 3:
+                    month = 'April';
+                    break;
+                case 4:
+                    month = 'May';
+                    break;
+                case 5:
+                    month = 'June';
+                    break;
+                case 6:
+                    month = 'July';
+                    break;
+                case 7:
+                    month = 'August';
+                    break;
+                case 8:
+                    month = 'September';
+                    break;
+                case 9:
+                    month = 'October';
+                    break;
+                case 10:
+                    month = 'November';
+                    break;
+                case 11:
+                    month = 'December';
+                    break;
+                default:
+                    console.error('There was an error in the Month!');
+                    break;
+            }
+
+            let formatTime = `${weekday}, ${month} ${date.getDate()} ${localHr}:${date.getMinutes()}:${date.getSeconds()} ${ampm}`
+            displayTime.innerHTML =
+                formatTime
+
+
+        }
+        setInterval(display, 1000);
+    </script>
 </body>
 
 </html>

@@ -1,12 +1,49 @@
-#resultBox {
-    height: 400px;
-    width: 100%;
-    border: 2px solid royalblue;
-    overflow-y: scroll;
-    padding: 15px 20px;
-}
-
-li:hover {
-    background-color: rebeccapurple;
-    color: aliceblue;
-}
+    #resultBox {
+        height: 300px;
+        width: 100%;
+        border: 2px solid royalblue;
+        overflow-y: scroll;
+        padding: 15px 20px;
+    }
+    
+    ul {
+        padding: 0;
+        margin: 0;
+    }
+    
+    li {
+        list-style: none;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+    
+    li:hover {
+        background-color: rebeccapurple;
+        color: aliceblue;
+    }
+    
+    img {
+        width: 100%;
+        height: 200px;
+    }
+    
+    .options {
+        margin-top: 50px;
+        margin-bottom: 25px;
+    }
+    
+    .finalizeOrder {
+        margin: 20px;
+    }
+    
+    .order {
+        height: 400px;
+        width: 80%;
+        border: 2px solid royalblue;
+        margin: auto;
+        display: none;
+        margin-bottom: 100px;
+        height: fit-content;
+        padding: 25px 15px;
+    }
