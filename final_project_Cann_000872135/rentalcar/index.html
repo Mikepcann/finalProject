@@ -5,19 +5,40 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="./homepageStyle.css">
     <title>Dodgey Brakes Car Rental</title>
 </head>
 
 <body>
     <div class="container">
-        <h1>Dodgey Brakes Car Rental</h1>
-        <h3>This is the last part before styling all pages!</h3>
-        <p id="currentTime"></p>
-        <a href="./rental.html">Rent A Car!</a>
+        <div class="title">
+            <h1>Dodgy Brakes Car Rental</h1>
+        </div>
+        <div class="subtitle">
+            <h3>Welcome to Dodgy Breaks Car Rental!</h3>
+            <p>We have been working tirelessly to reduce the number of accidents to our customers due to malfunctioning brakes. We thank all of our new and returning customers with open arms and a new accessability ramp into our buildings. PLease take advantage
+                of our great deals!</p>
+        </div>
+        <div class="displayTime">
+            <p>Current Time: </p>
+            <p class="currentTime"></p>
+        </div>
+        <div id="rentCar">
+            <a class="rentCar" href="./rental.html ">Rent A Car!</a>
+        </div>
+        <div class="foot">
+            <pre>
+                2080 Diamond Street Asheville
+                North Carolina
+                28801
+                Office: 828-545-1465
+                Fax: 828-300-0956</pre>
+        </div>
     </div>
     <script>
-        const displayTime = document.getElementById('currentTime');
+        // Script used to display the current time 
+        const displayTime = document.querySelector('.currentTime');
         const display = (date = new Date()) => {
             let ampm = (date.getHours() >= 12) ? 'pm' : 'am';
             let localHr = (date.getHours() <= 12) ? date.getHours() : date.getHours() - 12;
@@ -91,9 +112,7 @@
 
             let formatTime = `${weekday}, ${month} ${date.getDate()} ${localHr}:${date.getMinutes()}:${date.getSeconds()} ${ampm}`
             displayTime.innerHTML =
-                formatTime
-
-
+                formatTime;
         }
         setInterval(display, 1000);
     </script>

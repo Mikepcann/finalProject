@@ -124,14 +124,12 @@ function loadXML(fileAddress) {
     xhr.open('Get', fileAddress.searchForm, true);
     xhr.onload = function() {
         document.getElementById('searchForm').innerHTML = this.responseText;
-        // console.log(fileAddress.searchID)
         assignKeyups(fileAddress.id, fileAddress.searchID);
     }
     xhr.send();
 }
 // load the JSON into the variables
 function loadJSON(rawData) {
-    //console.log(api)
     let xhr = new XMLHttpRequest();
     xhr.open('GET', rawData.api, true);
     xhr.onload = function() {
@@ -254,9 +252,7 @@ function searchStringSTR(str, id) {
         }
     }
     displayTable.innerHTML = tablehead;
-
 }
-
 
 /**
  *Search functions for Secondary Suites
@@ -428,11 +424,9 @@ function searchStringPA(str, id) {
         }
     }
     displayTable.innerHTML = tablehead;
-
 }
 
-
-
+// creates a string used to move to a google maps link
 const createMap = (lat, long) =>
     `<a href= "https://www.google.com/maps/search/?api=1&query=${lat},${long}" target="_blank">Google Maps</A>`;
 
@@ -441,13 +435,3 @@ function clearTable() {
     displayTable.innerHTML = "";
 
 }
-
-/**
- * Things to to:
- * 1. figure out which form is loaded => CHECK
- * 2. load the JSON for that form => CHECK
- * 3. add keyup events to the appropriate fields => CHECK
- * 4.  perform search based on the field
- * 5. Display results on page
- * [clear results with each search or change to different dastaset search]
- * */

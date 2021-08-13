@@ -12,9 +12,7 @@ body {
 /* https://unsplash.com/photos/LOnSXGEfCF0 */
 
 .container {
-    /* margin: 100px; */
     margin-top: 0px;
-    /* width: 100%; */
     color: rgb(50, 24, 68);
     font-size: larger;
 }

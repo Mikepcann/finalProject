@@ -1,6 +1,5 @@
 window.onload = loadQuiz;
 let answers = [];
-//let xml;
 
 function loadQuiz() {
     let xhr = new XMLHttpRequest();
@@ -17,9 +16,7 @@ function displayQuestions(xml) {
     let questions = xmlDoc.getElementsByTagName('question');
     answers = xmlDoc.getElementsByTagName('rightanswers')[0].childNodes[0].nodeValue.split(',');
     let table = '';
-    // console.log(answers);
-    // answers = answers.childNodes[0].nodeValue;
-    //  console.log(questions.length);
+
     for (i = 0; i < questions.length; i++) {
         table +=
             `   <h4>Question ${questions[i].getElementsByTagName("qnumber")[0].childNodes[0].nodeValue}</h4>
@@ -37,7 +34,6 @@ function displayQuestions(xml) {
                 <label for="q${i+1}_4">D) ${questions[i].getElementsByTagName("d")[0].childNodes[0].nodeValue}</label>
                 <br>`;
     }
-    //  console.log(table)
     document.getElementById('quizForm').innerHTML = table;
 }
 
@@ -68,7 +64,7 @@ function checkResults() {
 
 function giveFeedback(userAnswer, quizLength) {
     // step 1. turn user selected red
-    // step 2. turn correct green
+
     console.log('User answers: ');
     console.log(userAnswer);
     console.log('Correct answers: ');
@@ -85,7 +81,7 @@ function giveFeedback(userAnswer, quizLength) {
             wrong.style.fontWeight = 'bold';
         }
     }
-    // Goes through the list and highlights the correct in bold green
+    // step 2. turn correct green
     let qNum = 1;
     let iterator = 0;
     result.forEach(() => {

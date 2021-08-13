@@ -1,49 +1,97 @@
-    #resultBox {
-        height: 300px;
-        width: 100%;
-        border: 2px solid royalblue;
-        overflow-y: scroll;
-        padding: 15px 20px;
-    }
-    
-    ul {
-        padding: 0;
-        margin: 0;
-    }
-    
-    li {
-        list-style: none;
-        width: 100%;
-        padding: 0;
-        margin: 0;
-    }
-    
-    li:hover {
-        background-color: rebeccapurple;
-        color: aliceblue;
-    }
-    
-    img {
-        width: 100%;
-        height: 200px;
-    }
-    
-    .options {
-        margin-top: 50px;
-        margin-bottom: 25px;
-    }
-    
-    .finalizeOrder {
-        margin: 20px;
-    }
-    
-    .order {
-        height: 400px;
-        width: 80%;
-        border: 2px solid royalblue;
-        margin: auto;
-        display: none;
-        margin-bottom: 100px;
-        height: fit-content;
-        padding: 25px 15px;
-    }
+            :root {
+               --main-bg-color: rgb(73, 75, 77);
+               --secondary-bg-color: rgba(10, 172, 172, 0.9);
+           }
+           
+           body,
+           html {
+               margin: 0px;
+               padding: 0px;
+               height: 100%;
+               width: 100%;
+               color: var(--main-bg-color);
+               font-weight: 500;
+               background-image: url('./img/andreas-dress-GhvpEtG5HMs-unsplash.jpg');
+               background-position: bottom;
+               background-attachment: fixed;
+               background-repeat: no-repeat;
+               background-size: cover;
+           }
+           
+           #resultBox {
+               height: 300px;
+               width: 100%;
+               overflow-y: scroll;
+               padding: 15px 20px;
+               border: 4px solid darkcyan;
+               background-color: aliceblue;
+           }
+           
+           .card {
+               background-color: var(--secondary-bg-color);
+               padding-top: 10px;
+           }
+           
+           ul {
+               padding: 0;
+               margin: 0;
+           }
+           
+           li {
+               list-style: none;
+               width: 100%;
+               padding: 0;
+               margin: 0;
+           }
+           
+           li:hover {
+               background-color: var(--secondary-bg-color);
+               color: aliceblue;
+           }
+           
+           img {
+               width: 100%;
+               height: 200px;
+           }
+           
+           .options,
+           .rentalLength {
+               margin-top: 50px;
+               margin-bottom: 25px;
+               border: 4px solid darkcyan;
+               background-color: aliceblue;
+               padding: 15px;
+           }
+           
+           .options h4,
+           .rentalLength h4 {
+               text-align: center;
+           }
+           
+           .finalizeOrder {
+               margin: 20px;
+           }
+           
+           .order {
+               height: 400px;
+               width: 80%;
+               border: 2px solid royalblue;
+               margin: auto;
+               display: none;
+               margin-bottom: 100px;
+               height: fit-content;
+               padding: 25px 15px;
+               border: 4px solid darkcyan;
+               background-color: aliceblue;
+               padding: 15px;
+           }
+           
+           .order h3,
+           h4 {
+               text-align: center;
+           }
+           
+           .order p {
+               margin-top: 25px;
+               text-align: right;
+           }

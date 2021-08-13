@@ -34,7 +34,6 @@ const searchList = (lName) => {
     //checks the list for a matching name
     clientArr.forEach((item) => {
         if (item.last_name.toLowerCase().startsWith(lName.toLowerCase())) {
-            // console.log(item.last_name)
             matches.push(`<li>${item.first_name} ${item.last_name}</l1>`)
         }
     })
@@ -49,6 +48,7 @@ const searchList = (lName) => {
     listItems.forEach((item) => {
         item.addEventListener('click', function() {
             findCurrentClientOBJ(item.innerHTML)
+            location.href = "#compactSelector";
             enableForm();
         })
     })
@@ -56,7 +56,7 @@ const searchList = (lName) => {
 
 }
 
-// used tio display the num of days for a rental
+// used to display the num of days for a rental
 document.getElementById('rentalDayValue').addEventListener('change', function() {
     displayNum(this.value)
 })
@@ -126,7 +126,7 @@ function finishOrder() {
     // adds selected items to an Array
 
 
-
+    // self invoking function
     (function load() {
         for (i = 0; i < rentalOptions.length; i++) {
             pickedOptions.push(rentalOptions[i].value)
@@ -171,7 +171,6 @@ function finishOrder() {
             </tr>`;
             for (i = 0; i < pickedOptions.length; i++) {
                 if (pickedOptions[i].startsWith('Roof Rack or Bicycle Rack')) {
-                    //add roof rack optin
                     roofRackTotal = (5 * numOfDays);
                     let rRow =
                         `<tr>
@@ -189,7 +188,6 @@ function finishOrder() {
                     console.log('gps ' + typeof gpsTotal)
                     optionsTable += gpsRow;
                 } else if (pickedOptions[i].startsWith('Child Seat')) {
-                    // childSeatTotal = (0).toFixed(2);
                     let csRow = `<tr>
                 <td>${pickedOptions[i]}</td>
                 <td>$${childSeatTotal.toFixed(2)}</td>
